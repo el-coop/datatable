@@ -1,0 +1,31 @@
+{
+	"name": "elcoop/datatable",
+	"description": "Vuetable package for Laravel",
+	"type": "Laravel Plugin",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "el-coop",
+			"email": "contact@elcoop.io"
+		}
+	],
+	"minimum-stability": "dev",
+	"require": {
+		"maatwebsite/excel": "^3.1"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "7"
+	},
+	"autoload": {
+		"psr-4": {
+			"ElCoop\\Datatable\\": "src/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"ElCoop\\Datatable\\Providers\\DatatableServiceProvider"
+			]
+		}
+	}
+}
