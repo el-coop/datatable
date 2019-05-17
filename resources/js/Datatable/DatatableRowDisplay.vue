@@ -28,10 +28,7 @@
 </script>
 
 <style scoped lang="scss">
-	$above-phone: "only screen and (min-width : 576px)";
-	$above-tablet: "only screen and (min-width : #{$tablet})";
-	$above-desktop: "only screen and (min-width : #{$desktop})";
-	$above-wide-screen: "only screen and (min-width : #{$widescreen})";
+	@import "variables";
 
 	.modal-body {
 		height: 100vh;
@@ -49,7 +46,7 @@
 			right: 0;
 
 			&:after, &:before {
-				background: $contrast-bg;
+				background: $row-display-bg;
 			}
 		}
 	}

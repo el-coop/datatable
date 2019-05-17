@@ -256,14 +256,7 @@
 </script>
 
 <style lang="scss">
-	$gap: 64px !default;
-	$tablet: 769px !default;
-	$desktop: 960px + (2 * $gap) !default;
-	$widescreen: 1152px + (2 * $gap) !default;
-	$above-phone: "only screen and (min-width : 576px)";
-	$above-tablet: "only screen and (min-width : #{$tablet})";
-	$above-desktop: "only screen and (min-width : #{$desktop})";
-	$above-wide-screen: "only screen and (min-width : #{$widescreen})";
+	@import "variables";
 
 	.table.is-loading {
 		opacity: 0.4;
