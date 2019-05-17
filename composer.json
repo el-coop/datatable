@@ -1,7 +1,7 @@
 {
 	"name": "elcoop/datatable",
 	"description": "Vuetable package for Laravel",
-	"type": "Laravel Plugin",
+	"type": "Laravel-Plugin",
 	"license": "MIT",
 	"authors": [
 		{
