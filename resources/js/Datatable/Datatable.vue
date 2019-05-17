@@ -33,21 +33,21 @@
 				<div class="level">
 					<div class="level-left">
 						<VuetablePaginationInfo class="level-item" ref="paginationInfo"
-												  :info-template="labels.pagination"
-												  :no-data-template="labels.noPagination">
+												:info-template="labels.pagination"
+												:no-data-template="labels.noPagination">
 						</VuetablePaginationInfo>
 					</div>
 					<div class="level-right">
 						<VuetablePagination ref="pagination" class="level-item" :prev-text="labels.prev"
-											 :next-text="labels.next"
-											 @vuetable-pagination:change-page="changePage"></VuetablePagination>
+											:next-text="labels.next"
+											@vuetable-pagination:change-page="changePage"></VuetablePagination>
 					</div>
 				</div>
 			</div>
 			<div class="filter">
 				<DatatableFilter :table-fields="fields" @filter="filter" :filter-text="labels.filter"
-								  :filters-text="labels.filters" :clear-text="labels.clear"
-								  :init-filters="initFilters"></DatatableFilter>
+								 :filters-text="labels.filters" :clear-text="labels.clear"
+								 :init-filters="initFilters"></DatatableFilter>
 			</div>
 		</div>
 		<DatatableRowDisplay :width="editWidth" :name="_uid">
@@ -256,6 +256,10 @@
 </script>
 
 <style lang="scss">
+	$gap: 64px !default;
+	$tablet: 769px !default;
+	$desktop: 960px + (2 * $gap) !default;
+	$widescreen: 1152px + (2 * $gap) !default;
 	$above-phone: "only screen and (min-width : 576px)";
 	$above-tablet: "only screen and (min-width : #{$tablet})";
 	$above-desktop: "only screen and (min-width : #{$desktop})";
