@@ -34,12 +34,11 @@ class DatatableService implements FromCollection, WithHeadings {
 	}
 	
 	private static function getTableConfig($path) {
-		// TODO remove table suffix
-		$filename = "{$path}Table";
+
 		if ($configPath = config('elcoop.datatable.path', false)) {
-			return require base_path("{$configPath}/{$filename}.php");
+			return require base_path("{$configPath}/{$path}.php");
 		}
-		$filename = str_replace('/', '.', $filename);
+		$filename = str_replace('/', '.', $path);
 		
 		return config($filename);
 		
