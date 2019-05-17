@@ -22,7 +22,7 @@ class DatatableServiceProvider extends ServiceProvider {
 	public function boot() {
 		$this->loadViewsFrom(__DIR__ . '/../views', 'elcoop:datatable');
 		$this->publishes([
-			__DIR__ . '/../../assets' => resource_path('js/vendor/elcoop')
+			__DIR__ . '/../../resources/js' => resource_path('js/vendor/elcoop')
 		]);
 	}
 }
