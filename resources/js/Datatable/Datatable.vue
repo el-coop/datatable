@@ -25,37 +25,34 @@
 							  @vuetable:pagination-data="paginationData"
 							  @vuetable:loading='tableLoading'
 							  @vuetable:loaded='tableLoaded'>
-						<template :v-if="deleteSlot" #delete="props">
-							<datatable-delete-form :delete-btn="deleteBtn" :action="deleteAction + props.rowData.id"
-												   :key="`delete${props.rowData.id}`" @success="refresh">
-
-							</datatable-delete-form>
+						<template :v-if="(!! $scopedSlots.delete)" #delete="props">
+							<slot name="delete"></slot>
 						</template>
 					</vuetable>
 				</div>
 				<div class="level">
 					<div class="level-left">
-						<vuetable-pagination-info class="level-item" ref="paginationInfo"
+						<VuetablePaginationInfo class="level-item" ref="paginationInfo"
 												  :info-template="labels.pagination"
 												  :no-data-template="labels.noPagination">
-						</vuetable-pagination-info>
+						</VuetablePaginationInfo>
 					</div>
 					<div class="level-right">
-						<vuetable-pagination ref="pagination" class="level-item" :prev-text="labels.prev"
+						<VuetablePagination ref="pagination" class="level-item" :prev-text="labels.prev"
 											 :next-text="labels.next"
-											 @vuetable-pagination:change-page="changePage"></vuetable-pagination>
+											 @vuetable-pagination:change-page="changePage"></VuetablePagination>
 					</div>
 				</div>
 			</div>
 			<div class="filter">
-				<datatable-filter :table-fields="fields" @filter="filter" :filter-text="labels.filter"
+				<DatatableFilter :table-fields="fields" @filter="filter" :filter-text="labels.filter"
 								  :filters-text="labels.filters" :clear-text="labels.clear"
-								  :init-filters="initFilters"></datatable-filter>
+								  :init-filters="initFilters"></DatatableFilter>
 			</div>
 		</div>
-		<datatable-row-display :width="editWidth" :name="_uid">
+		<DatatableRowDisplay :width="editWidth" :name="_uid">
 			<slot :object="object" :on-update="updateObject" :on-delete="deleteObject"></slot>
-		</datatable-row-display>
+		</DatatableRowDisplay>
 	</div>
 </template>
 
@@ -126,10 +123,6 @@
 
 			editWidth: {
 				default: 600
-			},
-			deleteSlot: {
-				type: Boolean,
-				default: false
 			},
 			exportButton: {
 				type: Boolean,
