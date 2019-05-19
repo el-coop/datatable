@@ -44,6 +44,7 @@ $filters = collect($filters ?? [])->merge(json_decode(\Request::get('filters', '
 	@endisset
 	<template #default="{object, onUpdate}">
 		<template v-if="object">
+			{{ $slot }}
 		</template>
 	</template>
 </datatable>
