@@ -8,18 +8,21 @@ if (!isset($fields)) {
 $filters = collect($filters ?? [])->merge(json_decode(\Request::get('filters', '[]')));
 ?>
 <datatable :field-settings="{{ $fields }}"
-	:extra-params="{
+		   :extra-params="{
 		table: '{{\Request::path()}}'
 	}"
-	@isset($editWidth)
-		:edit-width="{{$editWidth}}"
-	@endisset
-	@if(isset($customUrl))
-		url="{{$customUrl}}"
-	@else
-		url="\datatable"
-	@endif
-	:labels="{
+		   @isset($delete)
+		   :delete="true"
+		   @endisset
+		   @isset($editWidth)
+		   :edit-width="{{$editWidth}}"
+		   @endisset
+		   @if(isset($customUrl))
+		   url="{{$customUrl}}"
+		   @else
+		   url="\datatable"
+		   @endif
+		   :labels="{
 		pagination: '@lang('datatable.pagination')',
 		noPagination: '@lang('datatable.noPagination')',
 		next: '@lang('datatable.next')',
@@ -28,19 +31,17 @@ $filters = collect($filters ?? [])->merge(json_decode(\Request::get('filters', '
 		filter: '@lang('datatable.filter')',
 		clear: '@lang('datatable.clear')',
 	}"
-	:init-filters="{{ $filters->count() ? $filters : '{}' }}"
-	@isset($deleteButton)
-		:delete-slot="true"
-	@endif
-	@isset($formattersData)
-		:formatters-data="{{$formattersData}}"
-	@endif
-	@isset($deleteButtonTxt)
-	   delete-btn="{{$deleteButtonTxt}}"
-	@endisset
+		   :init-filters="{{ $filters->count() ? $filters : '{}' }}"
+
+		   @isset($formattersData)
+		   :formatters-data="{{$formattersData}}"
+		@endif
 >
 	@isset($buttons)
 		<template #buttons="{actions}">{{$buttons}}</template>
+	@endisset
+	@isset($delete)
+		<template #delete="{refresh,props}">{{$delete}}</template>
 	@endisset
 	<template #default="{object, onUpdate}">
 		<template v-if="object">
