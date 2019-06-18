@@ -15,7 +15,7 @@ $filters = collect($filters ?? [])->merge(json_decode(\Request::get('filters', '
 		   :delete="true"
 		   @endisset
 		   @isset($edit)
-		   :delete="{{$edit}}"
+		   :edit="{{$edit}}"
 		   @endisset
 		   @isset($editWidth)
 		   :edit-width="{{$editWidth}}"
